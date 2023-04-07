@@ -59,6 +59,12 @@ android {
 }
 
 dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     def nav_version = "2.5.3"
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -136,4 +142,18 @@ dependencies {
 
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
+
+  //  def jUnitVersion = "5.8.2"
+    def mockitoVersion = "4.0.0"
+    // Required -- JUnit 4 framework
+   // testImplementation "junit:junit:$jUnitVersion"
+    // Optional -- Robolectric environment
+   // testImplementation "androidx.test:core:$androidXTestVersion"
+    // Optional -- Mockito framework
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    // Optional -- mockito-kotlin
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoVersion"
+    // Optional -- Mockk framework
+    //testImplementation "io.mockk:mockk:$mockkVersion"
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.0")
 }
