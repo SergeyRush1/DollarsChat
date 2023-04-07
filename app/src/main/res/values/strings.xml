@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">DollarsChat</string>
+    <string name="Chat_screen">chat</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="Setting_screen">settings</string>
+    <string name="Profile_screen">profile</string>
+    <string name="Event_screen">event</string>
+
+
+
+    <string name="title_font_size">Font size</string>
+    <string name="title_font_size_small">Small</string>
+    <string name="title_font_size_medium">Medium</string>
+    <string name="title_font_size_big">Big</string>
+
+    <string name="title_padding_size">Margins</string>
+    <string name="title_padding_small">Small</string>
+    <string name="title_padding_medium">Medium</string>
+    <string name="title_padding_big">Big</string>
+
+    <string name="message_example">Message example</string>
+    <string name="action_dark_theme_enable">Enable dark theme</string>
+    
+    <string name="confirm_button">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="user_login">Login</string>
+    <string name="login_change_info">Введите новый логин, если хотите его изменить</string>
+
+    <string name="password_information">Ведите пароль</string>
+    <string name="password_error">Вы ввели неверный пароль</string>
+    <string name="full_room_message">Комната переполнена</string>
+    <string name="user_exit_message">вышел из чата</string>
+    <string name="exit_on_room_message">Вы уверенны что хотите выйти из комнаты?</string>
+    <string name="join_in_room">подключается к чату</string>
+    <string name="exiit_room_message">вышел из комнаты</string>
+    <string name="admin_delit_room">Админ распускает комнату</string>
+
+    <string name="user_name">Имя</string>
+    <string name="room_name">Название комнаты</string>
+    <string name="room_password">Пароль</string>
+    <string name="room_name_info">Ведите название комнаты</string>
+    <string name="room_size_create_info">Количество участников:</string>
+    <string name="room_acces_info">Закрытая комната</string>
+    <string name="room_created_value">Создано комнат</string>
+    <string name="messahes_value">Отправленно сообщений</string>
+    
+    <string name="deleted_user_confirm">Вы уверены что хотите отключить пользователя из комнаты?</string>
+    <string name="remove_user_message">был исключен</string>
+
+    <string name="change_user_profile">Изменить профиль</string>
+
+</resources>
