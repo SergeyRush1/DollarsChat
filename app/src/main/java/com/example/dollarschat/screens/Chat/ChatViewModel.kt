@@ -136,7 +136,9 @@ class ChatViewModel @Inject constructor(@ApplicationContext application: Context
         viewModelScope.launch(Dispatchers.IO){
            val room =  firebaseHelper.getRoom(currentState.room.admin?.id!!)
             room?.let {
-                _chatViewState.postValue(currentState.copy(room = room, userListAlert = true))
+                _chatViewState.postValue(currentState.copy(room = room,
+                    userListAlert = true,
+                    userAdmin = currentState.room.admin!!.id==userProfile.id))
             }
         }
     }
@@ -163,7 +165,7 @@ class ChatViewModel @Inject constructor(@ApplicationContext application: Context
         chatRoom = ChatRoomBase()
         _chatViewState.postValue(ChatState.Loading)
     }
-    fun loadRooms() {
+    private fun loadRooms() {
        viewModelScope.launch(Dispatchers.IO) {
 
            val roomID = roomPref.getString(ROOM_ID,"DEFAULT")
@@ -304,7 +306,6 @@ class ChatViewModel @Inject constructor(@ApplicationContext application: Context
                }
                if (!check){
                    exitAfterRemove ()
-                   _chatViewState.postValue(ChatState.ExpelledUser)
                }
 
 
@@ -372,6 +373,8 @@ class ChatViewModel @Inject constructor(@ApplicationContext application: Context
                 }
                 userInRoomListener = null
                 chatRoom = ChatRoomBase()
+                _chatViewState.postValue(ChatState.ExpelledUser)
+
             }
         }
     }

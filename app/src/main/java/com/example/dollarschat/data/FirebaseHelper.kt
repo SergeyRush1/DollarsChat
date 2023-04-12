@@ -246,6 +246,9 @@ class FirebaseHelper(context: Context) {
                  }else{
                      continuation.resume(null)
                  }
+         }.addOnFailureListener {
+             it.message
+             continuation.resume(null)
          }
      }
  }

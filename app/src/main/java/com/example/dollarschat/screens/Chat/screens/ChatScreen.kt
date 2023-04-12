@@ -51,7 +51,8 @@ import kotlinx.coroutines.launch
 fun chatScreen(state:ChatState.InRoom,
                painter:FirebaseHelper,
                messageSendClick:(String)->Unit,
-               exitRoomClick:()->Unit,userId:String,
+               exitRoomClick:()->Unit,
+               userId:String,
                okAlertDialogClick:()->Unit,
                cancelArertDialogClick:()->Unit,
                removeUserClick:(ArrayList<UserProfile>)->Unit,
@@ -203,7 +204,7 @@ fun chatScreen(state:ChatState.InRoom,
     }
     if (state.userListAlert){
         state.room.party?.let {
-            ListOfUsers(party = it, cancel = closeUserListClick, removeUserClick = removeUserClick )
+            ListOfUsers(party = it, cancel = closeUserListClick, removeUserClick = removeUserClick,state.userAdmin,userId )
         }
 
     }

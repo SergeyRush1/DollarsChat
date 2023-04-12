@@ -18,7 +18,7 @@ sealed class ChatState {
                       val alertExitDialog:Boolean = false,
                       val room:ChatRoomBase,
                       val exceptionFronRoom:Boolean = false,
-                      val userListAlert:Boolean=false):ChatState()
+                      val userListAlert:Boolean=false,val userAdmin:Boolean = false):ChatState()
     object LoadingMessageInRoom:ChatState()
 
     object RoomLoadimg:ChatState()

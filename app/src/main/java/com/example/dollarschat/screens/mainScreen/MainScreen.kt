@@ -76,17 +76,18 @@ fun MainScreen(
                        style = DollarsTheme.typography.toolbar
                    )
                },
-               navigationIcon = {
-                   IconButton(onClick = {
-                       coroutineScope.launch { scaffoldState.drawerState.open() }
-                   }) {
-                       Icon(
-                           painter = painterResource(R.drawable.ic_baseline_menu_24),
-                           contentDescription = "Menu",
-                           tint = DollarsTheme.color.menuIconColor
-                       )
-                   }
-               }, actions = {
+//               navigationIcon = {
+//                   IconButton(onClick = {
+//                       coroutineScope.launch { scaffoldState.drawerState.open() }
+//                   }) {
+//                       Icon(
+//                           painter = painterResource(R.drawable.ic_baseline_menu_24),
+//                           contentDescription = "Menu",
+//                           tint = DollarsTheme.color.menuIconColor
+//                       )
+//                   }
+//               },
+                actions = {
                    IconButton(onClick = { childNavController.navigate("createRoom") }) {
                        Icon(
                            painter = painterResource(id = R.drawable.ic_baseline_group_add_24),
