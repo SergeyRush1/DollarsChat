@@ -29,6 +29,7 @@ import com.example.dollarschat.screens.UserProfileScreen.models.ProfileState
 import com.example.dollarschat.ui.theme.DollarsTheme
 import com.example.dollarschat.ui.theme.uiComponents.DollarsButton
 import com.example.dollarschat.ui.theme.uiComponents.DollarsOutlineTextField
+import com.example.dollarschat.ui.theme.uiComponents.DollarsThemeAlertDialog
 
 @Composable
 fun ChangeUserProfile(state:ProfileState.ChangeUserProfile,
@@ -37,7 +38,7 @@ fun ChangeUserProfile(state:ProfileState.ChangeUserProfile,
                       newLoginChange:(String)->Unit,
                       profileChangeClick:(Pair<Avatars,String>)->Unit){
     val thisImage = remember { mutableStateOf(localUser.avatar) }
-
+    val alertDialogState = remember{ mutableStateOf(false) }
 
 
 Column(modifier = Modifier.padding(DollarsTheme.shapes.padding)) {
@@ -84,7 +85,10 @@ Column(modifier = Modifier.padding(DollarsTheme.shapes.padding)) {
                             modifier = Modifier
                                 .size(100.dp)
                                 .padding(5.dp)
-                                .clickable { thisImage.value = state.avatars[it].toAvatars() },
+                                .clickable { when(pack.second){
+                                    false ->{alertDialogState.value = true}
+                                    true->{thisImage.value = state.avatars[it].toAvatars()}
+                                } },
                             colorFilter = when(pack.second){
                                 false -> ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(0f) })
                                 true -> null
@@ -96,7 +100,13 @@ Column(modifier = Modifier.padding(DollarsTheme.shapes.padding)) {
 
         }
     }
-    Row(modifier = Modifier.fillMaxWidth().padding(DollarsTheme.shapes.padding),
+    if (alertDialogState.value){
+        DollarsThemeAlertDialog(text = stringResource(id = R.string.acces_failed_message), onClick = {alertDialogState.value=false})
+    }
+    
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .padding(DollarsTheme.shapes.padding),
         horizontalArrangement = Arrangement.Center) {
         DollarsButton(onClick = { profileChangeClick(Pair(thisImage.value!!,
             when(state.newUserLoginCheck){

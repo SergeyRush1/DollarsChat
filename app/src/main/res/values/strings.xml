@@ -47,6 +47,7 @@
     
     <string name="deleted_user_confirm">Вы уверены что хотите отключить пользователя из комнаты?</string>
     <string name="remove_user_message">был исключен</string>
+    <string name="acces_failed_message">Чтобы разблокировать этот аватар необходимо пройти соответствующий евент</string>
 
     <string name="change_user_profile">Изменить профиль</string>
 
