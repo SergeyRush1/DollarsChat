@@ -27,7 +27,6 @@ import javax.inject.Inject
 class UserProfileViewModel
 @Inject constructor(@ApplicationContext application: Context, private val avatarsRepository: AvatarsRepository, ):
     ViewModel(), EventHandler<ProfileEvent> {
-    val USER_LOGIN: Pattern = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9\\-]{0,10}")
     val _userProfileViewState: MutableLiveData<ProfileState> = MutableLiveData(ProfileState.ProfileInfo)
     val userCreateViewState: LiveData<ProfileState> = _userProfileViewState
     val firebaseHelper = FirebaseHelper(application)
@@ -61,8 +60,12 @@ class UserProfileViewModel
 
     }
     private fun checkUserLogin(event: ProfileEvent.ChangeEnteredLogin,curentState: ProfileState.ChangeUserProfile){
-        val loginCheck = event.newValue.matches(USER_LOGIN.toRegex())
-        _userProfileViewState.postValue(curentState.copy(newUserLoginCheck = loginCheck, newUserLogin = event.newValue))
+        if (event.newValue.length>=10){
+            _userProfileViewState.postValue(curentState.copy(newUserLoginCheck = false, newUserLogin = event.newValue))
+        }else{
+            _userProfileViewState.postValue(curentState.copy(newUserLoginCheck = true, newUserLogin = event.newValue))
+        }
+
     }
     private fun changeUserProfile(event: ProfileEvent.ChangeUserProfile,curentState:ProfileState.ChangeUserProfile){
         viewModelScope.launch(Dispatchers.IO) {
