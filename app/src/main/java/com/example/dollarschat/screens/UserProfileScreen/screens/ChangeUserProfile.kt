@@ -39,6 +39,7 @@ fun ChangeUserProfile(state:ProfileState.ChangeUserProfile,
                       profileChangeClick:(Pair<Avatars,String>)->Unit){
     val thisImage = remember { mutableStateOf(localUser.avatar) }
     val alertDialogState = remember{ mutableStateOf(false) }
+    val newUserLogin = remember{ mutableStateOf("") }
 
 
 Column(modifier = Modifier.padding(DollarsTheme.shapes.padding)) {
@@ -60,9 +61,11 @@ Column(modifier = Modifier.padding(DollarsTheme.shapes.padding)) {
     ) {
         DollarsOutlineTextField(
             label = stringResource(id = R.string.user_login),
-            value = state.newUserLogin,
+            value = newUserLogin.value,
             isError = !state.newUserLoginCheck,
-            onValueChange = newLoginChange)
+            onValueChange = {
+                newUserLogin.value=it
+                newLoginChange(it) })
     }
 
 
@@ -85,10 +88,16 @@ Column(modifier = Modifier.padding(DollarsTheme.shapes.padding)) {
                             modifier = Modifier
                                 .size(100.dp)
                                 .padding(5.dp)
-                                .clickable { when(pack.second){
-                                    false ->{alertDialogState.value = true}
-                                    true->{thisImage.value = state.avatars[it].toAvatars()}
-                                } },
+                                .clickable {
+                                    when (pack.second) {
+                                        false -> {
+                                            alertDialogState.value = true
+                                        }
+                                        true -> {
+                                            thisImage.value = state.avatars[it].toAvatars()
+                                        }
+                                    }
+                                },
                             colorFilter = when(pack.second){
                                 false -> ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(0f) })
                                 true -> null
